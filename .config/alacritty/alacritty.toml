@@ -1,0 +1,203 @@
+## Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+##
+## Configuration for Alacritty, the GPU enhanced terminal emulator.
+## It's a very basic and simple config file, for full configuration, Run `man 5 alacritty`
+
+## GENERAL --------------------------------------------------------
+
+## Import additional configuration files.
+import = ["~/.config/alacritty/colors.toml", "~/.config/alacritty/fonts.toml"]
+
+## You can set shell.program to the path of your favorite shell, e.g. /bin/zsh.
+## Entries in shell.args are passed as arguments to the shell.
+#shell = { program = "/bin/zsh", args = ["--login"] }
+
+## Directory the shell is started in. When this is unset, or "None",
+## the working directory of the parent process will be used.
+#working_directory = "None"
+
+## Live config reload
+live_config_reload = true
+
+## Offer IPC using alacritty msg
+ipc_socket = true
+
+## ENVIRONMENT ----------------------------------------------------
+
+## All key-value pairs in the [env] section will be added as environment variables for any process spawned
+## by Alacritty, including its shell. Some entries may override variables set by alacritty itself.
+[env]
+TERM = "alacritty"
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+## WINDOW ---------------------------------------------------------
+[window]
+position = "None"
+dynamic_padding = true
+decorations = "full"
+opacity = 0.9
+blur = false
+startup_mode = "Windowed"
+dynamic_title = true
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "None"
+
+## Number of lines/columns (not pixels) in the terminal.
+[window.dimensions]
+columns = 82
+lines = 24
+
+## Blank space added around the window in pixels.
+[window.padding]
+x = 12
+y = 12
+
+## SCROLLING ------------------------------------------------------
+[scrolling]
+history = 10000
+multiplier = 3
+
+## BELL -----------------------------------------------------------
+[bell]
+animation = "Linear"
+duration = 20
+command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
+
+## SELECTION ------------------------------------------------------
+[selection]
+save_to_clipboard = true
+
+## CURSOR ---------------------------------------------------------
+[cursor]
+vi_mode_style = "None"
+blink_interval = 750
+blink_timeout = 5
+unfocused_hollow = false
+thickness = 0.15
+
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+## MOUSE ----------------------------------------------------------
+[mouse]
+hide_when_typing = false
+
+## HINTS ----------------------------------------------------------
+[[hints.enabled]]
+command         = "xdg-open"
+hyperlinks      = true
+post_processing = true
+persist         = false
+mouse.enabled   = true
+binding         = { key = "U", mods = "Control|Shift" }
+regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+## DEBUG ----------------------------------------------------------
+[debug]
+render_timer = false
+persistent_logging = false
+log_level = "Warn"
+renderer = "None"
+print_events = false
+highlight_damage = false
+prefer_egl = false
+
+[font]
+size = 20.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Medium Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[colors.primary]
+background = "#24273A"
+foreground = "#CAD3F5"
+dim_foreground = "#CAD3F5"
+bright_foreground = "#CAD3F5"
+
+[colors.cursor]
+text = "#24273A"
+cursor = "#F4DBD6"
+
+[colors.vi_mode_cursor]
+text = "#24273A"
+cursor = "#B7BDF8"
+
+[colors.search.matches]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.search.focused_match]
+foreground = "#24273A"
+background = "#A6DA95"
+
+[colors.footer_bar]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.hints.start]
+foreground = "#24273A"
+background = "#EED49F"
+
+[colors.hints.end]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.selection]
+text = "#24273A"
+background = "#F4DBD6"
+
+[colors.normal]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[colors.bright]
+black = "#5B6078"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#A5ADCB"
+
+[colors.dim]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#F5A97F"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#F4DBD6"
+
+[shell]
+program = "/bin/zsh"
+args = [ "-l", "-c", "tmux attach || tmux"]
