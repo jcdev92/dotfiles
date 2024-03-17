@@ -104,7 +104,7 @@ highlight_damage = false
 prefer_egl = false
 
 [font]
-size = 20.0
+size = 13.0
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
